@@ -1,15 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+
+import "./App.css";
+import { pingApi } from "./apis/ping";
+import {PingComponent} from "./components/atoms/PingComponent";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isVisble, setIsVisible] = useState(false);
 
   return (
-    <div>yash</div>
-
-  )
+    <>
+      <button onClick={() => setIsVisible(!isVisble)}>Toggle</button>
+      {isVisble && <PingComponent/>}
+    </>
+  );
 }
 
-export default App
+export default App;

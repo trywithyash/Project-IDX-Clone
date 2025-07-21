@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
-import { CreateProject } from "./pages/CreateProject";
-
+import { Router } from "./Router";
 
 function App() {
-  const [isVisble, setIsVisible] = useState(false);
-
-  return (
-    <Routes>
-      <Route path="/" element={<CreateProject/>}/>
-    </Routes>
-  );
+  return <Router />;
 }
 
 export default App;

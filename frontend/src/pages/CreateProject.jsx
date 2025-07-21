@@ -1,6 +1,7 @@
 import { getLineHeight } from "antd/es/theme/internal";
 import { useCreateProject } from "../hooks/apis/mutations/useCreateProject";
 import { Button, Layout } from "antd";
+import { Navigate, useNavigate } from "react-router-dom";
 export const CreateProject = () => {
   const { Header, Content, Footer } = Layout;
   const LayoutStyle = {
@@ -34,11 +35,13 @@ export const CreateProject = () => {
 
   const { createProjectMutation, isPending } = useCreateProject();
 
+  const navigate=useNavigate();
   async function handleCreateProject() {
     console.log("going to trigger the api");
     try {
-      await createProjectMutation();
-      console.log("Now we should redirect to the ediot");
+     const response= await createProjectMutation();
+      console.log("Now we should redirect to the editor");
+      navigate(`/project/${response.data}`)
     } catch (error) {
       console.log("Error creatign project", error);
     }
